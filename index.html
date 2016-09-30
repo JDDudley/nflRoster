@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NFL Roster</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--FontAwesome-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!--jQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!--Custom Stylesheet-->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="title">NFL ROSTER</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" class="player-form">
+                <div id="loading">
+                    <br><br><br>
+                    <i class="fa fa-spinner fa-pulse fa-3x"></i>
+                    <span class="sr-only">Loading...</span>
+                    <br><br><br>
+                </div>
+                <!--<div class="form-group">
+                <form id="new-player">
+                <input type="text" class="form-control" id="name" placeholder="Player Name" required>
+                <input type="text" class="form-control" id="pos" placeholder="Position" required>
+                <input type="number" class="form-control" id="num" placeholder="Jersey Number" required>
+                <input type="submit" class="btn btn-success" value="Add Player" id="form-submit">
+                </form>
+            </div>-->
+            </div>
+        </div>
+        <div class="row" class="roster">
+            
+        </div>
+    </div>
+    <script src="service.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

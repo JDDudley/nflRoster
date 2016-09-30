@@ -1,0 +1,28 @@
+body {
+    background-image: url('bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    text-align: center;
+}
+#title {
+    background: rgba(0,80,0,0.75);
+    width: 100%;
+    height: auto;
+    color: white;
+    margin: 20 auto;
+    padding: 0px;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 4em;
+    letter-spacing: 4px;
+}
+.player-form {
+    text-align: center;
+    margin: auto;
+}
+.form-group {
+    width: 300px;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+}
