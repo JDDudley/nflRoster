@@ -35,6 +35,10 @@ var PlayersService = function(callback) {
                 return true;
             }
         });
+        //https swap on photos
+        for (i = 0; i < playersData.length); i++) {
+            player[i].photo = phayer[i].replace('http','https');
+        }
     }
 
     function cleanTeamNames() {
