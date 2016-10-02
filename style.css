@@ -21,6 +21,9 @@ body {
     text-align: center;
     margin: auto;
 }
+#select-team, #select-pos {
+    font-size: 18px;
+}
 .form-group {
     /*width: 300px;*/
     text-align: center;
