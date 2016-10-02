@@ -11,7 +11,17 @@ function searchPlayers() {
     pos = document.getElementById('select-pos').value;
     team = document.getElementById('select-team').value;
     var teamArr = playersService.getPlayers(pos, team);
+    updateOptions(pos, team);
     drawRoster(teamArr);
+}
+
+function updateOptions(pos, team) {
+    if (pos != 'null') {
+        document.getElementById('select-pos').options[0].text = 'ALL POSITIONS';
+    }
+    if (team != 'null') {
+        document.getElementById('select-team').options[0].text = 'ALL TEAMS';
+    }
 }
 
 function searchPosition(selectedPos) {
