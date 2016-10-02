@@ -4,11 +4,11 @@ var PlayersService = function(callback) {
     function loadPlayersData(){
         //check for localstorage of dataset
         var localData = localStorage.getItem('playersData');
-        if (localData) {
-            playersData = JSON.parse(localData);
-            return callback();
-            //short circuit if local data found
-        }
+        // if (localData) {
+        //     playersData = JSON.parse(localData);
+        //     return callback();
+        //     //short circuit if local data found
+        // }
         var url = "https://bcw-getter.herokuapp.com/?url="
         var url2 = "https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
         var apiUrl = url + encodeURIComponent(url2);
