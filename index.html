@@ -13,8 +13,75 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1 id="title">NFL ROSTER</h1>
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row nav-menu">
+            <div class="col-xs-12 title-bar">
+                <h1 id="title">NFL ROSTER</h1>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <form class="form-group form-inline">
+                    <!--<label for="select-team" class="control-label">Team:</label>-->
+                    <select class="form-control" id="select-team" onchange="searchPlayers()">
+                        <option value="null">SELECT TEAM</option>
+                        <option value="ARI">Arizona Cardinals</option>
+                        <option value="ATL">Atlanta Falcons</option>
+                        <option value="BAL">Baltimore Ravens</option>
+                        <option value="BUF">Buffalo Bills</option>
+                        <option value="CAR">Carolina Panthers</option>
+                        <option value="CHI">Chicago Bears</option>
+                        <option value="CIN">Cincinatti Bengals</option>
+                        <option value="CLE">Cleveland Browns</option>
+                        <option value="DAL">Dallas Cowboys</option>
+                        <option value="DEN">Denver Broncos</option>
+                        <option value="DET">Detriot Lions</option>
+                        <option value="GB">Green Bay Packers</option>
+                        <option value="HOU">Houstan Texans</option>
+                        <option value="IND">Indianapolis Colts</option>
+                        <option value="JAC">Jacksonville Jaguars</option>
+                        <option value="KC">Kansas City Chiefs</option>
+                        <option value="LAR">LA Rams</option>
+                        <option value="MIA">Miami Dolphins</option>
+                        <option value="MIN">Minnesota Vikings</option>
+                        <option value="NE">New England Patriots</option>
+                        <option value="NO">New Orleans Saints</option>
+                        <option value="NYG">New York Giants</option>
+                        <option value="NYJ">New York Jets</option>
+                        <option value="OAK">Oakland Raiders</option>
+                        <option value="PHI">Philadelphia Eagles</option>
+                        <option value="PIT">Pittsburgh Steelers</option>
+                        <option value="SD">San Diego Chargers</option>
+                        <option value="SEA">Seattle Seahawks</option>
+                        <option value="SF">San Francisco 49ers</option>
+                        <option value="TB">Tamba Bay Buccaneers</option>
+                        <option value="TEN">Tennessee Titans</option>
+                        <option value="WAS">Washington Redskins</option>
+                    </select>
+                    <!--<button type="button" class="btn btn-success" id="search-team">
+                        <span><i class="fa fa-search"></i></span>
+                    </button>-->
+                </form>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+                <form class="form-group form-inline">
+                    <!--<label for="select-pos" class="control-label">Position:</label>-->
+                    <select class="form-control" id="select-pos" onchange="searchPlayers()">
+                        <option value="null">SELECT POSITION</option>
+                        <option value="DB">Defensive Back</option>
+                        <option value="DL">Defensive Line</option>
+                        <option value="DST">Defense & Special Teams</option>
+                        <option value="K">Kicker</option>
+                        <option value="LB">Linebacker</option>
+                        <option value="QB">Quarterback</option>
+                        <option value="RB">Running Back</option>
+                        <option value="TE">Tight End</option>
+                        <option value="WR">Wide Receiver</option>
+                    </select>
+                    <!--<button type="button" class="btn btn-success" id="search-pos">
+                        <span class="fa fa-search"></span>
+                    </button>-->
+                </form>
+            </div>
+        </div>
         <div class="row">
             <div class="col-xs-12" class="player-form">
                 <div id="loading">
@@ -33,7 +100,7 @@
             </div>-->
             </div>
         </div>
-        <div class="row" class="roster">
+        <div class="row" id="roster">
             
         </div>
     </div>
