@@ -10,7 +10,7 @@ var PlayersService = function(callback) {
             //short circuit if local data found
         }
         var url = "https://bcw-getter.herokuapp.com/?url="
-        var url2 = "http://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
+        var url2 = "https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
         var apiUrl = url + encodeURIComponent(url2);
         $.getJSON(apiUrl, function(data) {
             playersData = data.body.players;
