@@ -25,10 +25,10 @@ body {
     font-size: 18px;
 }
 .form-group {
-    /*width: 300px;*/
+    width: 100%;
     text-align: center;
     margin: auto;
-    padding: 10px;
+    /*padding: 10px;*/
 }
 #roster {
     margin-top: 20px;

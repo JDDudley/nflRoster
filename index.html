@@ -19,9 +19,8 @@
         <div class="row nav-menu">
             <div class="col-xs-12 title-bar">
                 <h1 id="title">NFL ROSTER</h1>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6">
                 <form class="form-group form-inline">
+                    <input type="text" class="form-control" placeholder="PLAYER NAME" id="search-name" onkeyup="searchPlayers();if (event.keyCode == 13) { getMusic(); return false; }">
                     <!--<label for="select-team" class="control-label">Team:</label>-->
                     <select class="form-control" id="select-team" onchange="searchPlayers()">
                         <option value="null">SELECT TEAM</option>
@@ -61,10 +60,6 @@
                     <!--<button type="button" class="btn btn-success" id="search-team">
                         <span><i class="fa fa-search"></i></span>
                     </button>-->
-                </form>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-6">
-                <form class="form-group form-inline">
                     <!--<label for="select-pos" class="control-label">Position:</label>-->
                     <select class="form-control" id="select-pos" onchange="searchPlayers()">
                         <option value="null">SELECT POSITION</option>
@@ -84,6 +79,7 @@
                 </form>
             </div>
         </div>
+        <!--loading bar & misc. old functions-->
         <div class="row">
             <div class="col-xs-12" class="player-form">
                 <div id="loading">
@@ -103,8 +99,9 @@
             </div>-->
             </div>
         </div>
-        <div class="row" id="roster">
-            
+        <!--roster will print here-->
+        <div class="row">
+            <div class="col=xs-12" id="roster"></div>
         </div>
     </div>
     <script src="service.js"></script>
