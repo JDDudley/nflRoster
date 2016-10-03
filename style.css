@@ -37,6 +37,11 @@ body {
 #roster-title {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 2em;
+    color: #006600;
+    text-shadow: 0px 0px 6px white;
+}
+#roster-toggle:hover {
+    cursor: pointer;
 }
 #my-roster {
     /*background: rgba(255,255,255,0.5);*/
@@ -51,17 +56,17 @@ body {
 #my-roster div .card:hover {
     background: #fff;
 }
-#my-roster-title {
-    backround: rgba(255,255,255,0.5);
-}
 .player-card {
     background: rgba(255,255,255,0.5);
     border-radius: 10px;
     margin-bottom: 6px;
 }
+.player-card:hover {
+    background: rgba(255,255,255,0.75);
+}
 .player-img {
     width: 170px;
-    height: 170px;
+    height: auto;
     max-width: 100%;
 }
 .player-controls {
@@ -80,6 +85,7 @@ body {
 .add-player:hover {
     color: #009900;
     text-shadow: 0px 0px 10px white;
+    cursor: pointer;
 }
 .remove-player {
     float: right;
@@ -88,4 +94,5 @@ body {
 .remove-player:hover {
     color: #990000;
     text-shadow: 0px 0px 10px white;
+    cursor: pointer;
 }

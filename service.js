@@ -26,6 +26,13 @@ var PlayersService = function(callback) {
     }
 
     this.addToRoster = function(id) {
+        //make sure not duplicate
+        for (i = 0; i < myRoster.length; i++) {
+            if (myRoster[i].id == id) {
+                // alert('Cannot add duplicate player!');
+                return myRoster;
+            }
+        }
         for (i=0; i < playersData.length; i++) {
             if (playersData[i].id == id) {
                 myRoster.push(playersData[i]);
@@ -154,7 +161,7 @@ var PlayersService = function(callback) {
                     playersData[i].team = 'San Francisco 49ers';
                     break;
                 case 'TB':
-                    playersData[i].team = 'Tamba Bay Buccaneers';
+                    playersData[i].team = 'Tampa Bay Buccaneers';
                     break;
                 case 'TEN':
                     playersData[i].team = 'Tennessee Titans';
