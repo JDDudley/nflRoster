@@ -1,5 +1,6 @@
 var loading = true; //used for spinner
 var playersService = new PlayersService(ready);
+var textSearch = false; //trigger to run array through text search
 
 //when playersService is done loading
 function ready(){
@@ -11,12 +12,19 @@ function ready(){
 function searchPlayers() {
     pos = document.getElementById('select-pos').value;
     team = document.getElementById('select-team').value;
-    // searchName = document.getElementById('search-name').value;
+    //clear search box for now bc its not functioning with these
+    //team and position selectors
+    document.getElementById('search-name').value = '';
     console.log('searching...');
-    console.log(searchName);
     var teamArr = playersService.getPlayers(pos, team);
     updateOptions(pos, team);
     drawRoster(teamArr);
+}
+
+function searchText(searchText) {
+    var out = [];
+    out = playersService.searchPlayers(searchText);
+    drawRoster(out);
 }
 
 //once a dropdown is used, top option 'SELECT...' is replaced with 'ALL...'

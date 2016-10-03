@@ -1,14 +1,15 @@
 var PlayersService = function(callback) {
     var playersData = [];
+    var curPlayers = [];
 
     function loadPlayersData(){
-        //check for localstorage of dataset
+        // check for localstorage of dataset
         var localData = localStorage.getItem('playersData');
-        // if (localData) {
-        //     playersData = JSON.parse(localData);
-        //     return callback();
-        //     //short circuit if local data found
-        // }
+        if (localData) {
+            playersData = JSON.parse(localData);
+            return callback();
+            //short circuit if local data found
+        }
         var url = "https://bcw-getter.herokuapp.com/?url="
         var url2 = "https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
         var apiUrl = url + encodeURIComponent(url2);
@@ -185,7 +186,8 @@ var PlayersService = function(callback) {
                 return true;
             }
         })
-        return teamPlayers;
+        curPlayers = teamPlayers;
+        return curPlayers;
     }
 
     this.getPlayersByPosition = function(position) {
@@ -194,7 +196,8 @@ var PlayersService = function(callback) {
                 return true;
             }
         })
-        return posPlayers;
+        curPlayers = posPlayers;
+        return curPlayers;
     }
 
     this.getPlayers = function(position, teamName) {
@@ -218,8 +221,43 @@ var PlayersService = function(callback) {
                 }
             });
         }
+        curPlayers = out;
+        return curPlayers;
+    }
+
+    this.searchPlayers = function(searchText) {
+        var out = [];
+        console.log(searchText);
+        if (searchText.length < 1) {
+            return;
+        }
+        var outNum = 0;
+        for (var i = 0; i < playersData.length; i++) {
+            for (var j = 0; j < searchText.length; j++) {
+                if (playersData[i].fullname[j] == searchText[j]) {
+                    out[outNum] = playersData[i];
+                    outNum++;
+                }
+            } 
+        }
+        console.log(out);
         return out;
     }
+
+    this.searchPlayersOLD = function(text) {
+        var out = [];
+        if (curPlayers.length < 1) {
+            curPlayers = playersData;
+        }
+        for (i = 0; i < curPlayers.length; i++) {
+            if (curPlayers[i].fullname.substr(1,text.length) == text) {
+                out.push(curPlayers[i]);
+            }
+        }
+        curPlayers = out;
+        return curPlayers;
+    }
+
 
 //note: this function used for testing and takes significant load time (3000+ players)
 //do not use mistakenly

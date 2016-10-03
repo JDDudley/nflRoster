@@ -20,7 +20,7 @@
             <div class="col-xs-12 title-bar">
                 <h1 id="title">NFL ROSTER</h1>
                 <form class="form-group form-inline">
-                    <input type="text" class="form-control" placeholder="PLAYER NAME" id="search-name" onkeyup="searchPlayers();if (event.keyCode == 13) { getMusic(); return false; }">
+                    <input type="text" class="form-control" placeholder="PLAYER NAME" id="search-name" onkeyup="searchText(this.value)">
                     <!--<label for="select-team" class="control-label">Team:</label>-->
                     <select class="form-control" id="select-team" onchange="searchPlayers()">
                         <option value="null">SELECT TEAM</option>
