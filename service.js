@@ -1,11 +1,13 @@
 var PlayersService = function(callback) {
     var playersData = [];
     var curPlayers = [];
+    var myRoster = [];
 
     function loadPlayersData(){
         // check for localstorage of dataset
         var localData = localStorage.getItem('playersData');
         if (localData) {
+            console.log('Loading player data from localstorage...');
             playersData = JSON.parse(localData);
             return callback();
             //short circuit if local data found
@@ -21,6 +23,25 @@ var PlayersService = function(callback) {
             console.log('Finished Writing Player Data to localStorage');
             callback();
         });
+    }
+
+    this.addToRoster = function(id) {
+        for (i=0; i < playersData.length; i++) {
+            if (playersData[i].id == id) {
+                myRoster.push(playersData[i]);
+                return myRoster;
+            }
+        }
+    }
+
+    this.removeFromRoster = function(id) {
+        for (i=0; i < myRoster.length; i++) {
+            if (myRoster[i].id == id) {
+                myRoster.splice(i,1);
+                return myRoster;
+            }
+        }
+        
     }
 
     function cleanPlayersData() {
@@ -233,12 +254,16 @@ var PlayersService = function(callback) {
         }
         var outNum = 0;
         for (var i = 0; i < playersData.length; i++) {
+            var totMatch = 0;
             for (var j = 0; j < searchText.length; j++) {
                 if (playersData[i].fullname[j] == searchText[j]) {
-                    out[outNum] = playersData[i];
-                    outNum++;
+                    totMatch++;
                 }
-            } 
+            }
+            if (totMatch == searchText.length) {
+                out[outNum] = playersData[i];
+                outNum++;
+            }
         }
         console.log(out);
         return out;

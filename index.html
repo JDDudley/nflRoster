@@ -99,9 +99,17 @@
             </div>-->
             </div>
         </div>
-        <!--roster will print here-->
+        <!--my roster will print here-->
         <div class="row">
-            <div class="col=xs-12" id="roster"></div>
+            <div class="col-xs-12" id="my-roster-title" onclick="toggleMyRoster()">
+                <h2 id="roster-title">YOUR TEAM <span class="glyphicon glyphicon-triangle-right" id="roster-toggle"></span></h2>
+            </div>
+            <div class="col-xs-12" id="my-roster">
+            </div>
+        </div>
+        <!--full or searched roster will print here-->
+        <div class="row">
+            <div class="col-xs-12" id="roster"></div>
         </div>
     </div>
     <script src="service.js"></script>
