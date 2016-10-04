@@ -38,7 +38,7 @@ body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 2em;
     color: #006600;
-    text-shadow: 0px 0px 6px white;
+    text-shadow: 1px 1px 10px white;
 }
 #roster-toggle:hover {
     cursor: pointer;

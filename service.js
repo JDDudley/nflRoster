@@ -259,20 +259,26 @@ var PlayersService = function(callback) {
         if (searchText.length < 1) {
             return;
         }
+        pos = document.getElementById('select-pos').value;
+        team = document.getElementById('select-team').value;
+        if (!pos && !team) {
+            var searchArray = playersData;
+        } else {
+            var searchArray = curPlayers;
+        }
         var outNum = 0;
-        for (var i = 0; i < playersData.length; i++) {
+        for (var i = 0; i < searchArray.length; i++) {
             var totMatch = 0;
-            for (var j = 0; j < searchText.length; j++) {
-                if (playersData[i].fullname[j] == searchText[j]) {
+            for (var  j = 0; j < searchText.length; j++) {
+                if (searchArray[i].fullname[j] == searchText[j]) {
                     totMatch++;
                 }
             }
             if (totMatch == searchText.length) {
-                out[outNum] = playersData[i];
+                out[outNum] = searchArray[i];
                 outNum++;
             }
         }
-        console.log(out);
         return out;
     }
 
@@ -331,4 +337,22 @@ var PlayersService = function(callback) {
     cleanPlayersData(); //clean up data
     cleanTeamNames(); //readable team names
     cleanPositions(); //readable positions
+}
+
+
+
+
+
+
+
+
+
+
+
+myPlayers = {
+    "11231": {}
+}
+
+nfl= {
+    '6567876':{}
 }

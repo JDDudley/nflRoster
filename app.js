@@ -8,7 +8,8 @@ function ready(){
     loading = false; //done loading
     $('#loading').hide();
     $('#my-roster').hide();
-    $('my-roster-title').hide();
+    $('#my-roster-title').hide();
+    $('#results-title').hide();
 }
 //called by page input to run search depending on input
 function searchPlayers() {
@@ -20,12 +21,21 @@ function searchPlayers() {
     console.log('searching...');
     var teamArr = playersService.getPlayers(pos, team);
     updateOptions(pos, team);
+    if (myRosterHidden == false) {
+        hideMyRoster();
+    }
+    if (teamArr.length > 0) {
+        $('#results-title').show();
+    }
     drawRoster(teamArr);
 }
 
 function searchText(searchText) {
     var out = [];
     out = playersService.searchPlayers(searchText);
+    if (myRosterHidden == false) {
+        hideMyRoster();
+    }
     drawRoster(out);
 }
 
@@ -60,6 +70,7 @@ function addToRoster(playerToAdd) {
 function showMyRoster() {
     myRosterHidden = false;
     $('#my-roster').show();
+    $('#my-roster-title').show();
     document.getElementById('roster-toggle').className = "glyphicon glyphicon-triangle-bottom";
 }
 
