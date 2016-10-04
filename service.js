@@ -261,12 +261,13 @@ var PlayersService = function(callback) {
         }
         pos = document.getElementById('select-pos').value;
         team = document.getElementById('select-team').value;
+        if (curPlayers.length < 1) {
+            curPlayers = playersData;
+        }
         if (!pos && !team) {
             var searchArray = playersData;
-        } else if (curPlayers.length > 0) {
-            var searchArray = curPlayers;
         } else {
-            var searchArray = playersData;
+            var searchArray = curPlayers;
         }
         var outNum = 0;
         for (var i = 0; i < searchArray.length; i++) {
