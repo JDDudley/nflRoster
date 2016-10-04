@@ -2,8 +2,15 @@ var PlayersService = function(callback) {
     var playersData = [];
     var curPlayers = [];
     var myRoster = [];
+    var usersData = {};
 
     function loadPlayersData(){
+        // check for localstorage of user data
+        var localUser = localStorage.getItem('userData');
+        if (localUser) {
+            console.log('Loading user data from localstorage...');
+            myRoster = JSON.parse(localUser);
+        }
         // check for localstorage of dataset
         var localData = localStorage.getItem('playersData');
         if (localData) {
@@ -12,6 +19,8 @@ var PlayersService = function(callback) {
             return callback();
             //short circuit if local data found
         }
+        //get user roster if saved
+        // getUserData();
         var url = "https://bcw-getter.herokuapp.com/?url="
         var url2 = "https://api.cbssports.com/fantasy/players/list?version=3.0&SPORT=football&response_format=json";
         var apiUrl = url + encodeURIComponent(url2);
@@ -23,6 +32,44 @@ var PlayersService = function(callback) {
             console.log('Finished Writing Player Data to localStorage');
             callback();
         });
+    }
+    //this saves to array with user name
+    this.saveUsersData = function(userName, userRoster) {
+        if (userName) {
+            usersData[userName] = userRoster;
+        }
+        localStorage.setItem('localUsers', JSON.stringify(usersData));
+        return usersData;
+    }
+
+    this.getUsersData = function(userName) {
+        var localUsers = localStorage.getItem('localUsers');
+        if (localUsers) {
+            console.log('Loading local users data...');
+            usersData = JSON.parse(localUsers);
+        }
+        myRoster = usersData[userName];
+        console.log(usersData);
+        console.log(myRoster);
+        return myRoster;
+    }
+    //this saves the current page's roster contents
+    this.saveUserData = function() {
+        localStorage.setItem('userData', JSON.stringify(myRoster));
+        console.log('Local user data updated.');
+    }
+
+    // this.getUserData = function() {
+    //     var localData = localStorage.getItem('userData');
+    //     if (localData) {
+    //         console.log('Loading user data from localstorage...');
+    //         myRoster = JSON.parse(localData);
+    //     }
+    //     return myRoster;
+    // }
+
+    this.getMyRoster = function() {
+        return myRoster;
     }
 
     this.addToRoster = function(id) {
@@ -39,6 +86,7 @@ var PlayersService = function(callback) {
                 return myRoster;
             }
         }
+        saveUserData();
     }
 
     this.removeFromRoster = function(id) {
@@ -48,7 +96,7 @@ var PlayersService = function(callback) {
                 return myRoster;
             }
         }
-        
+        saveUserData();
     }
 
     function cleanPlayersData() {
@@ -257,7 +305,7 @@ var PlayersService = function(callback) {
         var out = [];
         console.log(searchText);
         if (searchText.length < 1) {
-            return;
+            return out;
         }
         pos = document.getElementById('select-pos').value;
         team = document.getElementById('select-team').value;

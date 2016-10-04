@@ -18,6 +18,10 @@
     <div class="container-fluid">
         <div class="row nav-menu">
             <div class="col-xs-12 title-bar">
+                <div class="load-save-icons">
+                    <span class="glyphicon glyphicon-download" id="load-icon" onclick="loadData();"></span>
+                    <span class="glyphicon glyphicon-floppy-disk" id="save-icon" onclick="saveData();"></span>
+                </div>
                 <h1 id="title">NFL ROSTER</h1>
                 <form class="form-group form-inline">
                     <input type="text" class="form-control" placeholder="PLAYER NAME" id="search-name" onkeyup="searchText(this.value)">

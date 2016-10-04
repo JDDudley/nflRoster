@@ -2,6 +2,7 @@ var loading = true; //used for spinner
 var playersService = new PlayersService(ready);
 var textSearch = false; //trigger to run array through text search
 var myRosterHidden = true; //hide roster until player added
+var userName = '';
 
 //when playersService is done loading
 function ready(){
@@ -10,11 +11,45 @@ function ready(){
     $('#my-roster').hide();
     $('#my-roster-title').hide();
     $('#results-title').hide();
+    // var myRoster = playersService.getMyRoster();
+    // console.log(myRoster);
+    // console.log(myRoster.length);
+    // if (myRoster.length > 0) {
+    //     $('#my-roster').show();
+    //     $('#my-roster-title').show();
+    // }
 }
+
+function checkCurrentRoster() {
+    var myRoster = playersService.getMyRoster();
+    console.log(myRoster.length);
+    if (myRoster.length > 0) {
+        showMyRoster();
+        drawMyRoster(myRoster);
+    }
+}
+
+checkCurrentRoster();
+
+function loadData() {
+    var userName = prompt('What\'s your first name?');
+    var myRoster = playersService.getUsersData(userName);
+    console.log(myRoster);
+    drawMyRoster(myRoster);
+}
+
+function saveData() {
+    var userName = prompt('What\'s your first name?');
+    console.log('writing to save object...');
+    var myRoster = playersService.getMyRoster();
+    var usersData = playersService.saveUsersData(userName, myRoster);
+    console.log(usersData);
+}
+
 //called by page input to run search depending on input
 function searchPlayers() {
-    pos = document.getElementById('select-pos').value;
-    team = document.getElementById('select-team').value;
+    var pos = document.getElementById('select-pos').value;
+    var team = document.getElementById('select-team').value;
     //clear search box for now bc its not functioning with these
     //team and position selectors
     document.getElementById('search-name').value = '';
@@ -35,6 +70,9 @@ function searchText(searchText) {
     out = playersService.searchPlayers(searchText);
     if (myRosterHidden == false) {
         hideMyRoster();
+    }
+    if (out.length > 0) {
+        $('#results-title').show();
     }
     drawRoster(out);
 }
@@ -65,6 +103,7 @@ function addToRoster(playerToAdd) {
     var myRoster = playersService.addToRoster(playerToAdd);
     showMyRoster();
     drawMyRoster(myRoster);
+    playersService.saveUserData();
 }
 
 function showMyRoster() {
@@ -98,6 +137,7 @@ function removeFromRoster(playerToRemove) {
         hideMyRoster();
     }
     drawMyRoster(myRoster);
+    playersService.saveUserData();
 }
 
 function drawMyRoster(myRoster) {

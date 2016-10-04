@@ -4,6 +4,15 @@ body {
     background-size: cover;
     text-align: center;
 }
+.load-save-icons {
+    text-align: right;
+    width: 100%;
+    font-size: 2em;
+}
+#load-icon:hover, #save-icon:hover {
+    color: lime;
+    text-shadow: 1px 1px 10px white;
+}
 #title {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 4em;
@@ -40,6 +49,13 @@ body {
     color: #006600;
     text-shadow: 1px 1px 10px white;
 }
+#results-title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5em;
+    color: #006600;
+    text-shadow: 1px 1px 10px white;
+    text-decoration: underline;
+}
 #roster-toggle:hover {
     cursor: pointer;
 }
@@ -72,7 +88,7 @@ body {
 .player-controls {
     font-size: 2em;
     padding: 6px;
-    margin-top: 6px;
+    margin-top: 0px;
     height: 2px;
 }
 .player-info {
@@ -80,7 +96,9 @@ body {
 }
 .add-player {
     float: left;
+    text-align: left;
     color: #006600;
+    margin-bottom: -24px;
 }
 .add-player:hover {
     color: #009900;
@@ -89,7 +107,9 @@ body {
 }
 .remove-player {
     float: right;
+    text-align: right;
     color: #660000;
+    margin-bottom: -24px;
 }
 .remove-player:hover {
     color: #990000;
