@@ -35,12 +35,15 @@ function loadData() {
     var userName = prompt('What\'s your first name?');
     var myRoster = playersService.getUsersData(userName);
     console.log(myRoster);
-    drawMyRoster(myRoster);
+    if (myRoster.length > 0) {
+        showMyRoster();
+        drawMyRoster(myRoster);
+    }
 }
 
 function saveData() {
     var userName = prompt('What\'s your first name?');
-    console.log('writing to save object...');
+    console.log('writing ' + userName + ' to save object...');
     var myRoster = playersService.getMyRoster();
     var usersData = playersService.saveUsersData(userName, myRoster);
     console.log(usersData);

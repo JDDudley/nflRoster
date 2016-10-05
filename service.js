@@ -49,6 +49,7 @@ var PlayersService = function(callback) {
             usersData = JSON.parse(localUsers);
         }
         myRoster = usersData[userName];
+        console.log(userName);
         console.log(usersData);
         console.log(myRoster);
         return myRoster;
