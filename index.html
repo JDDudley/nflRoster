@@ -19,8 +19,12 @@
         <div class="row nav-menu">
             <div class="col-xs-12 title-bar">
                 <div class="load-save-icons">
-                    <span class="glyphicon glyphicon-download" id="load-icon" onclick="loadData();"></span>
-                    <span class="glyphicon glyphicon-floppy-disk" id="save-icon" onclick="saveData();"></span>
+                    <div class="col-xs-6 text-left">
+                        <span class="glyphicon glyphicon-download" id="load-icon" onclick="loadData();">Load</span>
+                    </div>
+                    <div class="col-xs-6 text-right">    
+                        <span class="glyphicon glyphicon-floppy-disk" id="save-icon" onclick="saveData();">Save</span>
+                    </div>
                 </div>
                 <h1 id="title">NFL ROSTER</h1>
                 <form class="form-group form-inline">
